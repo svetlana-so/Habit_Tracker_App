@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#app {
+  font-family: Andale Mono;
+  background-color: #333;
+  padding: 25px;
+}
