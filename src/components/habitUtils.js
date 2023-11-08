@@ -47,7 +47,7 @@ const completionMessage = computed(() => {
   }
   for (const text in habitGroups) {
     if (habitGroups[text].length >= 7) {
-      return `Congratulations! You've successfully completed the habit '${text}' for seven days in a row. Great work!`;
+      return `Congratulations! You've successfully completed the habit '${text}' for seven days in a row. Keep going!`;
     }
   }
   return null;

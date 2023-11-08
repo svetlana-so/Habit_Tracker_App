@@ -1,9 +1,11 @@
 <template>
-  <div v-if="message" class="completion-message">
+  <div v-if="message" class="completion-message flex flex-col items-center">
     <div class="confetti-container">
       <ConfettiExplosion />
     </div>
     {{ message }}
+    <!-- <button class="closeMsgBtn" @click="closeCompletionMessage">Close</button> -->
+    
   </div>
 </template>
 
@@ -24,5 +26,11 @@ export default {
   position: absolute;
   bottom: 250px;
   left: 250px;
+}
+.closeMsgBtn {
+  background-color: grey;
+  padding: 5px;
+  width: 150px;
+  border-radius: 15px;
 }
 </style>
