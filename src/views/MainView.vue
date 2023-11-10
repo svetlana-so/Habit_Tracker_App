@@ -81,13 +81,13 @@ const toggleDaySelection = day => {
         placeholder="Enter a new habit"
         @keyup.enter="handleCreateHabit"
       />
-      <button @click="handleCreateHabit">Create a Habit</button>
-      <button @click="showModal = false">Close</button>
+      <button class="createbtn" @click="handleCreateHabit">Create a Habit</button>
+      <button class="closebtn" @click="showModal = false">Close</button>
     </div>
   </div>
 
   <header class="mx-auto px-14 mt-6" id="upperDisplay">
-    <h2 class="text-2xl md:text-6xl text-zinc-400 m-4 neon-text-shadow">
+    <h2 class="text-2xl md:text-6xl text-white-400 m-4 neon-text-shadow">
       Welcome to Habit Tracker App
     </h2>
     <h1 class="text-2xl md:text-4xl text-zinc-400 neon-text-shadow">
@@ -193,7 +193,7 @@ const toggleDaySelection = day => {
 .modal {
   width: 550px;
   background-color: #24579a;
-  border-radius: 10px;
+  border-radius: 55px;
   padding: 30px;
   position: relative;
   display: flex;
@@ -265,5 +265,13 @@ time.icon span {
 }
 .animated-date {
   animation: floatUp 2s ease infinite;
+}
+.closebtn {
+  background-color: rgb(157, 44, 44);
+  border-radius: 25px ;
+}
+.createbtn {
+  background-color: teal;
+  border-radius: 25px ;
 }
 </style>

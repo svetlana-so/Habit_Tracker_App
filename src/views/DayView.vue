@@ -7,7 +7,7 @@ import {
 import { formatDatetoText, isFutureDate } from '../components/dateUtils.js';
 import { renderCategoryIcon } from '../components/iconsCategory.js';
 import {updateHabitDoneStatus, completionMessage} from '../components/habitUtils.js'
-import CompletionMessage from '../components/CompletionMessage.vue'; 
+import CompletionMessage from './CompletionMessage.vue'; 
 
 const props = defineProps(['day']);
 
@@ -30,7 +30,7 @@ const doneHabitsPercentage = computed(() => {
   const doneHabitsCount = habitsForSelectedDay.value.filter(
     habit => habit.done
   ).length;
-  return ((doneHabitsCount / habitsForSelectedDay.value.length) * 100);
+  return ((doneHabitsCount / habitsForSelectedDay.value.length) * 100).toFixed(0);
 });
 </script>
 

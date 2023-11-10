@@ -1,9 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('tailwindcss/base');
+@import url('tailwindcss/components');
+@import url('tailwindcss/utilities');
 
 #app {
-  font-family: Andale Mono;
+  font-family: "Andale Mono", monospace;
   background-color: #333;
   padding: 25px;
 }

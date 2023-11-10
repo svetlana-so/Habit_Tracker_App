@@ -15,6 +15,11 @@ const router = createRouter({
         },
       ],
     },
+    {
+      path: '/:catchAll(.*)',
+      name: 'NotFound',
+      component: () => import('../views/ErrorPage.vue'),
+    }
   ],
 });
 
