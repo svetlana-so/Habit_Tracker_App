@@ -1,0 +1,3 @@
+import{_ as s}from"./_plugin-vue_export-helper-c27b6911.js";import{b as c,d as _,p as a,l as n,e as o}from"./index-b49aefa5.js";
+
+const r="/assets/images-b4dd41b6.jpeg";const d={}; const t=e=>(a("data-v-320afec4"),e=e(),n(),e); const p={class:"errorpage text-4xl text-center"}; const i=t(()=>o("h1",null,"Whoops! ",-1)); const l=t(()=>o("p",null,"404 Page Not Found",-1)); const h=t(()=>o("img",{src:r,alt:"Dog on vacation"},null,-1)); const u=t(()=>o("p",null,"Looks like the page went on vacation.",-1)); const f=[i,l,h,u];function g(e,m){return c(),_("div",p,f)}const k=s(d,[["render",g],["__scopeId","data-v-320afec4"]]);export{k as default};
