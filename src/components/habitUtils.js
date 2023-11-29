@@ -1,15 +1,15 @@
-import { computed } from 'vue';
 import {
   dailyHabits,
   saveDailyHabitsToLocalStorage,
-} from './localStorageUtils';
+} from './localStorageUtils.js';
+import { computed } from 'vue';
 
 const createHabit = (selectedCategory, newHabit, selectedDay) => {
   if (selectedCategory && newHabit) {
     const numberOfDaysAhead = 7;
-    for (let i = 0; i < numberOfDaysAhead; i += 1) {
+    for (let i = 0; i < numberOfDaysAhead; i++) {
       const futureDate = new Date(
-        selectedDay.getTime() + i * 24 * 60 * 60 * 1000,
+        selectedDay.getTime() + i * 24 * 60 * 60 * 1000
       );
       dailyHabits.value.push({
         txt: newHabit.toUpperCase(),
@@ -20,14 +20,13 @@ const createHabit = (selectedCategory, newHabit, selectedDay) => {
     }
     saveDailyHabitsToLocalStorage(dailyHabits.value);
   } else {
-    // fix that with allert
     window.alert('Please select a category and enter a habit.');
   }
 };
 
 const updateHabitDoneStatus = (txt, day) => {
   const targetHabit = dailyHabits.value.find(
-    h => h.txt === txt && h.day === day,
+    h => h.txt === txt && h.day === day
   );
   if (targetHabit) {
     targetHabit.done = !targetHabit.done;
@@ -35,22 +34,23 @@ const updateHabitDoneStatus = (txt, day) => {
   }
 };
 
+
 const completionMessage = computed(() => {
-  const habitGroups = dailyHabits.value.reduce((groups, habit) => {
+  const habitGroups = {};
+  for (const habit of dailyHabits.value) {
     if (habit.done) {
-      groups[habit.txt] = groups[habit.txt] || [];
-      groups[habit.txt].push(habit);
+      if (!habitGroups[habit.txt]) {
+        habitGroups[habit.txt] = [];
+      }
+      habitGroups[habit.txt].push(habit);
     }
-    return groups;
-  }, {});
-
-  const completedHabit = Object.keys(habitGroups).find(
-    text => habitGroups[text].length >= 7,
-  );
-
-  return completedHabit
-    ? `Congratulations! You've successfully completed the habit '${completedHabit}' for seven days in a row. Keep going!`
-    : null;
+  }
+  for (const text in habitGroups) {
+    if (habitGroups[text].length >= 7) {
+      return `Congratulations! You've successfully completed the habit '${text}' for seven days in a row. Keep going!`;
+    }
+  }
+  return null;
 });
 
-export { createHabit, updateHabitDoneStatus, completionMessage };
+export { createHabit, updateHabitDoneStatus, completionMessage};

@@ -1,22 +1,19 @@
 <script setup>
-import { computed, defineProps } from 'vue';
+import { computed, defineProps} from 'vue';
 import {
   saveDailyHabitsToLocalStorage,
   dailyHabits,
-} from '../components/localStorageUtils';
-import { formatDatetoText, isFutureDate } from '../components/dateUtils';
-import { renderCategoryIcon } from '../components/iconsCategory';
-import {
-  updateHabitDoneStatus,
-  completionMessage,
-} from '../components/habitUtils';
-import CompletionMess from './CompletionMessage.vue';
+} from '../components/localStorageUtils.js';
+import { formatDatetoText, isFutureDate } from '../components/dateUtils.js';
+import { renderCategoryIcon } from '../components/iconsCategory.js';
+import {updateHabitDoneStatus, completionMessage} from '../components/habitUtils.js'
+import CompletionMessage from './CompletionMessage.vue'; 
 
 const props = defineProps(['day']);
 
-const habitsForSelectedDay = computed(() =>
-  dailyHabits.value.filter(habit => habit.day === props.day),
-);
+const habitsForSelectedDay = computed(() => {
+  return dailyHabits.value.filter(habit => habit.day === props.day);
+});
 
 const removeHabit = habit => {
   dailyHabits.value = dailyHabits.value.filter(h => h.txt !== habit.txt);
@@ -31,11 +28,9 @@ const doneHabitsPercentage = computed(() => {
     return 0;
   }
   const doneHabitsCount = habitsForSelectedDay.value.filter(
-    habit => habit.done,
+    habit => habit.done
   ).length;
-  return ((doneHabitsCount / habitsForSelectedDay.value.length) * 100).toFixed(
-    0,
-  );
+  return ((doneHabitsCount / habitsForSelectedDay.value.length) * 100).toFixed(0);
 });
 </script>
 
@@ -53,10 +48,7 @@ const doneHabitsPercentage = computed(() => {
         :style="{ width: doneHabitsPercentage + '%' }"
       ></div>
     </div>
-    <completion-mess
-      :message="completionMessage"
-      class="animate-pulse m-8 text-center text-2xl text-teal-400"
-    ></completion-mess>
+    <completion-message :message="completionMessage" class="animate-pulse m-8 text-center text-2xl text-teal-400"></completion-message>
     <div class="habitsCard flex justify-center">
       <ul>
         <li
@@ -100,10 +92,9 @@ const doneHabitsPercentage = computed(() => {
 
 <style>
 .card {
-  background-color: rgb(93 89 89 / 52%);
+  background-color: rgba(93, 89, 89, 0.502);
   border-radius: 15px;
 }
-
 .centered-span {
   display: flex;
   justify-content: center;

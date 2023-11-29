@@ -1,7 +1,6 @@
 import { ref } from 'vue';
-
 export const dailyHabits = ref([]);
-export const saveDailyHabitsToLocalStorage = () => {
+export const saveDailyHabitsToLocalStorage = dailyHabits => {
   localStorage.setItem('dailyHabits', JSON.stringify(dailyHabits));
 };
 

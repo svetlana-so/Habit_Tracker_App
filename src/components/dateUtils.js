@@ -11,20 +11,20 @@ const formatDatetoText = dateString => {
   const options = { month: 'long', day: 'numeric' };
   const formattedDate = new Date(dateString).toLocaleDateString(
     'en-US',
-    options,
+    options
   );
   return formattedDate;
 };
 
 const today = ref(new Date());
 const formattedTodayISO = computed(
-  () => today.value.toISOString().split('T')[0],
+  () => today.value.toISOString().split('T')[0]
 );
 const formattedTodayDay = computed(() =>
-  today.value.toLocaleDateString(undefined, { weekday: 'long' }),
+  today.value.toLocaleDateString(undefined, { weekday: 'long' })
 );
 const formattedTodayMonth = computed(() =>
-  today.value.toLocaleDateString(undefined, { month: 'long' }),
+  today.value.toLocaleDateString(undefined, { month: 'long' })
 );
 const formattedTodayDate = computed(() => today.value.getDate());
 
@@ -43,5 +43,5 @@ export {
   formattedTodayDay,
   formattedTodayMonth,
   formattedTodayDate,
-  isFutureDate,
+  isFutureDate
 };

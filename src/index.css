@@ -3,7 +3,7 @@
 @import url('tailwindcss/utilities');
 
 #app {
-  font-family: 'Andale Mono', monospace;
+  font-family: "Andale Mono", monospace;
   background-color: #333;
   padding: 25px;
 }
