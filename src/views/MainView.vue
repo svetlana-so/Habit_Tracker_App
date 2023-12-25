@@ -79,8 +79,8 @@ const toggleDaySelection = day => {
         placeholder="Enter a new habit"
         @keyup.enter="handleCreateHabit"
       />
-      <button class="createbtn" @click="handleCreateHabit">Create a Habit</button>
-      <button class="closebtn" @click="showModal = false">Close</button>
+      <button class="focus:outline-none text-white bg-teal-700 hover:bg-teal-800 focus:ring-2 focus:ring-purple-300 font-medium rounded-lg text-m px-5 py-2.5 mb-2" @click="handleCreateHabit">Create a Habit</button>
+      <button class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-2 focus:ring-purple-300 font-medium rounded-lg text-m px-5 py-2.5 mb-2"  @click="showModal = false">Close</button>
     </div>
   </div>
 
@@ -99,7 +99,7 @@ const toggleDaySelection = day => {
       <div
         v-for="(day, index) in dateRange"
         :key="index"
-        class="date-box"
+        class="flex flex-wrap bg-zinc-400 bg-opacity-25 justify-center text-center rounded-full w-20"
         :class="{ 'selected-day': day === selectedDay }"
         @click="toggleDaySelection(day)"
       >
@@ -121,31 +121,12 @@ const toggleDaySelection = day => {
 </template>
 
 <style scoped>
-.date-box {
-  background-color: rgba(93, 89, 89, 0.502);
-  text-align: center;
-  padding: 20px;
-  border-radius: 40% 40%;
-  color: rgb(173, 172, 171);
-}
+
 .selected-day {
   background-color: #24579a;
   color: white;
-  border-radius: 20%;
 }
-#upperDisplay {
-  max-width: 90%;
-  height: 70vh;
-  background-image: url('../assets/bgr.jpeg');
-  background-size: cover;
-  background-position: center;
-  border-radius: 55px;
-  color: #fcfbff;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: flex-end;
-}
+
 .overlay {
   position: absolute;
   width: 100%;
@@ -156,12 +137,11 @@ const toggleDaySelection = day => {
   align-items: center;
   justify-content: center;
 }
-/* for the addCard */
 
 .modal {
   width: 550px;
-  background-color: #24579a;
-  border-radius: 55px;
+  background-color: #2c68b5;
+  border-radius: 15px;
   padding: 30px;
   position: relative;
   display: flex;
@@ -174,12 +154,4 @@ const toggleDaySelection = day => {
   border: 1px solid;
 }
 
-.closebtn {
-  background-color: rgb(157, 44, 44);
-  border-radius: 25px ;
-}
-.createbtn {
-  background-color: teal;
-  border-radius: 25px ;
-}
 </style>

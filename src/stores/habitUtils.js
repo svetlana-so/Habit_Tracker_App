@@ -1,8 +1,8 @@
 import {
   dailyHabits,
   saveDailyHabitsToLocalStorage,
-} from './localStorageUtils.js';
-import { computed } from 'vue';
+} from "./localStorageUtils.js";
+import { computed } from "vue";
 
 const createHabit = (selectedCategory, newHabit, selectedDay) => {
   if (selectedCategory && newHabit) {
@@ -14,19 +14,19 @@ const createHabit = (selectedCategory, newHabit, selectedDay) => {
       dailyHabits.value.push({
         txt: newHabit.toUpperCase(),
         category: selectedCategory,
-        day: futureDate.toISOString().split('T')[0],
+        day: futureDate.toISOString().split("T")[0],
         done: false,
       });
     }
     saveDailyHabitsToLocalStorage(dailyHabits.value);
   } else {
-    window.alert('Please select a category and enter a habit.');
+    window.alert("Please select a category and enter a habit.");
   }
 };
 
 const updateHabitDoneStatus = (txt, day) => {
   const targetHabit = dailyHabits.value.find(
-    h => h.txt === txt && h.day === day
+    (h) => h.txt === txt && h.day === day
   );
   if (targetHabit) {
     targetHabit.done = !targetHabit.done;
@@ -34,9 +34,16 @@ const updateHabitDoneStatus = (txt, day) => {
   }
 };
 
+const deleteCompletedHabits = (completedHabitText) => {
+  dailyHabits.value = dailyHabits.value.filter(
+    (habit) => !(habit.done && habit.txt === completedHabitText)
+  );
+  saveDailyHabitsToLocalStorage(dailyHabits.value);
+};
 
 const completionMessage = computed(() => {
   const habitGroups = {};
+
   for (const habit of dailyHabits.value) {
     if (habit.done) {
       if (!habitGroups[habit.txt]) {
@@ -45,12 +52,17 @@ const completionMessage = computed(() => {
       habitGroups[habit.txt].push(habit);
     }
   }
+
   for (const text in habitGroups) {
     if (habitGroups[text].length >= 7) {
-      return `Congratulations! You've successfully completed the habit '${text}' for seven days in a row. Keep going!`;
+      setTimeout(() => {
+        deleteCompletedHabits(text);
+      }, 10000);
+
+      return `Congratulations! You've successfully completed the habit '${text}' for seven days in a row. Keep going! The habit will be delited in 10 seconds.`;
     }
   }
+
   return null;
 });
-
-export { createHabit, updateHabitDoneStatus, completionMessage};
+export { createHabit, updateHabitDoneStatus, completionMessage };

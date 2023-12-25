@@ -9,25 +9,25 @@ import {
 </script>
 
 <template>
-<header class="mx-auto px-14 mt-6" id="upperDisplay">
-    <h2 class="text-2xl md:text-6xl text-white m-4 neon-text-shadow">
+<header class="mx-auto px-10 mt-6" id="upperDisplay">
+    <h2 class="text-xl md:text-4xl text-white m-4 neon-text-shadow">
       Welcome to Habit Tracking App
     </h2>
-    <h1 class="text-2xl md:text-4xl text-white neon-text-shadow">
-      Develop Grit, Forge Your Habits: The Path to Unwavering Success.
-    </h1>
     <time :datetime="formattedTodayISO" class="icon animated-date">
       <em>{{ formattedTodayDay }}</em>
       <strong>{{ formattedTodayMonth }}</strong>
       <span>{{ formattedTodayDate }}</span>
     </time>
+    <h1 class="text-l md:text-2xl text-white text-center">
+      Develop Grit, Forge Your Habits: The Path to Unwavering Success.
+    </h1>
   </header>
 </template>
 
 <style scoped>
 #upperDisplay {
     max-width: 90%;
-    height: 70vh;
+    height: 50vh;
     background-image: url('../assets/bgr.jpeg');
     background-size: cover;
     background-position: center;
@@ -85,16 +85,4 @@ time.icon span {
     0 0 30px rgba(76, 89, 107, 0.8);
 } 
 
-/* animate the calender */
-@keyframes floatUp {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
 </style> 
