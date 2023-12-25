@@ -1,17 +1,15 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import {
-  formatDate,
-  formattedTodayISO,
-  formattedTodayDay,
-  formattedTodayMonth,
-  formattedTodayDate,
-} from '../components/dateUtils.js';
+  formatDate
+} from '../stores/dateUtils.js';
 import {
   loadDailyHabitsFromLocalStorage,
   dailyHabits,
-} from '../components/localStorageUtils.js';
-import { createHabit } from '../components/habitUtils.js';
+} from '../stores/localStorageUtils.js';
+import { createHabit } from '../stores/habitUtils.js';
+import AddButton from '../components/AddButton.vue'
+import Header from '../components/Header.vue'
 
 const selectedDate = ref(new Date());
 const showModal = ref(false);
@@ -86,19 +84,7 @@ const toggleDaySelection = day => {
     </div>
   </div>
 
-  <header class="mx-auto px-14 mt-6" id="upperDisplay">
-    <h2 class="text-2xl md:text-6xl text-white-400 m-4 neon-text-shadow">
-      Welcome to Habit Tracker App
-    </h2>
-    <h1 class="text-2xl md:text-4xl text-zinc-400 neon-text-shadow">
-      Develop Grit, Forge Your Habits: The Path to Unwavering Success.
-    </h1>
-    <time :datetime="formattedTodayISO" class="icon animated-date">
-      <em>{{ formattedTodayDay }}</em>
-      <strong>{{ formattedTodayMonth }}</strong>
-      <span>{{ formattedTodayDate }}</span>
-    </time>
-  </header>
+<Header />
   <main class="m-10">
     <h1 class="animate-pulse text-center m-6 text-teal-400">
       Please select a day
@@ -130,9 +116,7 @@ const toggleDaySelection = day => {
       </button>
     </div>
     <router-view></router-view>
-    <div class="addbtn">
-      <button class="add" @click="showModal = true">+</button>
-    </div>
+    <AddButton v-if="selectedDay" @click="showModal = true"/>
   </main>
 </template>
 
@@ -162,22 +146,6 @@ const toggleDaySelection = day => {
   justify-content: space-around;
   align-items: flex-end;
 }
-.add {
-  border: none;
-  padding: 10px;
-  width: 70px;
-  height: 70px;
-  cursor: pointer;
-  background-color: #24579a;
-  border-radius: 100%;
-  color: rgb(255, 255, 255);
-  font-size: 30px;
-}
-.addbtn {
-  display: flex;
-  justify-content: center;
-  margin: 50px;
-}
 .overlay {
   position: absolute;
   width: 100%;
@@ -206,66 +174,6 @@ const toggleDaySelection = day => {
   border: 1px solid;
 }
 
-.neon-text-shadow {
-  text-shadow:
-    0 0 10px rgba(36, 87, 153, 0.8),
-    0 0 20px rgba(36, 87, 153, 0.8),
-    0 0 30px rgba(36, 87, 153, 0.8),
-    0 0 40px rgba(68, 68, 101, 0.8);
-}
-time.icon {
-  font-size: 16px;
-  display: block;
-  position: relative;
-  width: 7em;
-  height: 7em;
-  background-color: #978d8daa;
-  border-radius: 0.6em;
-  overflow: hidden;
-}
-time.icon * {
-  display: block;
-  width: 100%;
-  font-size: 16px;
-  font-style: normal;
-  text-align: center;
-}
-time.icon em {
-  position: absolute;
-  bottom: 0.1em;
-  color: #3f3e3c;
-}
-time.icon strong {
-  position: absolute;
-  top: 0;
-  padding: 0.4em 0;
-  color: #292928;
-  background-color: #193861a4;
-}
-time.icon span {
-  font-size: 50px;
-  padding-top: 30px;
-  color: #24579ac8;
-  text-shadow:
-    0 0 10px rgba(76, 112, 158, 0.8),
-    0 0 20px rgba(54, 65, 79, 0.8),
-    0 0 30px rgba(76, 89, 107, 0.8);
-}
-/* animate the calender */
-@keyframes floatUp {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-.animated-date {
-  animation: floatUp 2s ease infinite;
-}
 .closebtn {
   background-color: rgb(157, 44, 44);
   border-radius: 25px ;

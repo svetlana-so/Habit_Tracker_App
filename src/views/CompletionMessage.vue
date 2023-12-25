@@ -3,9 +3,7 @@
     <div class="confetti-container">
       <ConfettiExplosion />
     </div>
-    {{ message }}
-    <!-- <button class="closeMsgBtn" @click="closeCompletionMessage">Close</button> -->
-    
+    {{ message }}   
   </div>
 </template>
 

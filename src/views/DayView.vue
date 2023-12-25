@@ -3,10 +3,10 @@ import { computed, defineProps} from 'vue';
 import {
   saveDailyHabitsToLocalStorage,
   dailyHabits,
-} from '../components/localStorageUtils.js';
-import { formatDatetoText, isFutureDate } from '../components/dateUtils.js';
-import { renderCategoryIcon } from '../components/iconsCategory.js';
-import {updateHabitDoneStatus, completionMessage} from '../components/habitUtils.js'
+} from '../stores/localStorageUtils.js';
+import { formatDatetoText, isFutureDate } from '../stores/dateUtils.js';
+import { renderCategoryIcon } from '../stores/iconsCategory.js';
+import {updateHabitDoneStatus, completionMessage} from '../stores/habitUtils.js'
 import CompletionMessage from './CompletionMessage.vue'; 
 
 const props = defineProps(['day']);
@@ -101,3 +101,4 @@ const doneHabitsPercentage = computed(() => {
   align-items: center;
 }
 </style>
+../stores/localStorageUtils.js../stores/dateUtils.js../stores/iconsCategory.js../stores/habitUtils.js
