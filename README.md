@@ -2,9 +2,6 @@
 
 The **Habit Tracking App** is a web application that helps you track your daily habits, keep a record of your progress, and celebrate your achievements. It allows you to add and manage habits, set completion goals, and view your daily progress in a visually engaging way.
 
-## Table of Contents
-
-
 ## Features
 
 - **Habit Tracking**: Add and manage your daily habits with ease.
