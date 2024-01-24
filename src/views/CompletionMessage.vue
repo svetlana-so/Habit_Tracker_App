@@ -25,7 +25,8 @@ export default {
   bottom: 250px;
   left: 250px;
 }
-.closeMsgBtn {
+
+.close-msg-btn {
   background-color: grey;
   padding: 5px;
   width: 150px;

@@ -131,7 +131,7 @@ const toggleDaySelection = day => {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: rgb(0, 0, 0, 0.77);
+  background-color: rgb(0 0 0 / 77%);
   z-index: 10;
   display: flex;
   align-items: center;
@@ -139,15 +139,16 @@ const toggleDaySelection = day => {
 }
 
 .modal {
-  width: 550px;
+  width: auto;
   background-color: #2c68b5;
   border-radius: 15px;
   padding: 30px;
   position: relative;
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   gap: 10px;
 }
+
 .modal button {
   padding: 10px;
   cursor: pointer;
